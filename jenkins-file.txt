@@ -1,0 +1,42 @@
+Jenkins Installation
+
+https://www.jenkins.io/doc/book/installing/linux/#debianubuntu
+
+-------------------------------------------------------
+
+1. Create EC2 server with T2 micro 
+
+
+clear
+    2  yum update -y
+    3  clear
+    4  yum install git -y
+    
+   13  sudo yum install java-11-amazon-corretto-headless -y
+   14  java --version
+   15  sudo wget -O /usr/share/keyrings/jenkins-keyring.asc   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+   16  sudo wget -O /etc/yum.repos.d/jenkins.repo     https://pkg.jenkins.io/redhat-stable/jenkins.repo
+   17  sudo rpm --import https://pkg.jenkins.io/redhat-stable/jenkins.io-2023.key
+   18  yum install maven -y
+   19  yum update -y
+   20  yum install jenkins -y
+   21  sudo systemctl restart jenkins
+   22  sudo systemctl status jenkins
+   23  cat /var/lib/jenkins/secrets/initialAdminPassword
+
+-------------------------------------------------------------------
+-------------------------------------------------------------------
+
+history
+    1  clear
+    2  apt update -y
+    3  java --version
+    4  apt install openjdk-17-jre-headless -y
+    5  sudo wget -O /usr/share/keyrings/jenkins-keyring.asc   https://pkg.jenkins.io/debian-stable/jenkins.io-2023.key
+    6  echo "deb [signed-by=/usr/share/keyrings/jenkins-keyring.asc]"   https://pkg.jenkins.io/debian-stable binary/ | sudo tee   /etc/apt/sources.list.d/jenkins.list > /dev/null
+    7  apt install maven -y
+    8  sudo apt-get update -y
+    9  sudo apt-get install jenkins -y
+   10  sudo systemctl start jenkins
+   11  sudo systemctl status jenkins
+   12  cat /var/lib/jenkins/secrets/initialAdminPassword
